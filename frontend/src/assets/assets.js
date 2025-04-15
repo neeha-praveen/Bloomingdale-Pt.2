@@ -8,6 +8,7 @@ import remove from './images/remove.png'
 import insta from './images/insta.png'
 import twitter from './images/twitter.png'
 import linkedin from './images/linkedin.png'
+import cross_icon from './images/cross_icon.png'
 
 import product_1 from './images/flowering_plants.jpg'
 import product_2 from './images/outdoor_plants.jpg'
@@ -41,7 +42,8 @@ export const assets = {
     remove: remove,
     insta: insta,
     twitter: twitter,
-    linkedin: linkedin
+    linkedin: linkedin,
+    cross_icon: cross_icon
 }
 
 export const product_list = [

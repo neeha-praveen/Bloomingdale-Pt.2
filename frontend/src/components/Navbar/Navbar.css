@@ -28,7 +28,7 @@
     background: transparent;
     font-size: 16px;
     color: #49557e;
-    border: 1px solid rgb(5, 119, 49);
+    border: 1px solid #ff66c4;
     padding: 10px 30px;
     border-radius: 50px;
     cursor: pointer;
@@ -36,7 +36,7 @@
 }
 
 .navbar button:hover {
-    background-color: #55996f;
+    background-color: #ff66c4;
 }
 
 /*for underline to come when hovered*/

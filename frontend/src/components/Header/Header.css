@@ -34,14 +34,16 @@
 }
 
 .header-contents button {
-    border:none;
+    border: none;
     color: #49557e;
-    font-weight:500;
-    padding: 1vw 2.3vw;
+    font-weight: 500;
+    padding: 0.8vw 1.8vw;
     background-color: #ffffff;
-    font-size: max(1vw,13px);
-    border-radius: 15px;
-}
+    font-size: max(1vw, 14px);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}   
 
 @media (max-width: 1050px) {
     .header{
@@ -50,9 +52,12 @@
     .header-contents{
         max-width: 45%;
     }
+    .header-contents button {
+        padding: 1vw 2vw;
+    }
 }
 
-@media (max-width: 7550px) {
+@media (max-width: 750px) {
     .header-contents{
         max-width: 55%;
     }
@@ -60,6 +65,6 @@
         display: none;
     }
     .header-contents button{
-        padding: 2vw 4vw;
+        padding: 1.5vw 3vw;
     }
 }
