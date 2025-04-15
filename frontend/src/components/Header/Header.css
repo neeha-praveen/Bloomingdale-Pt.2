@@ -5,7 +5,7 @@
     background-size: cover;
     position: relative;
     border-radius: 15px;
-    max-width: 1400px;
+    max-width: 100%;
     overflow: hidden;
 }
 
@@ -41,4 +41,25 @@
     background-color: #ffffff;
     font-size: max(1vw,13px);
     border-radius: 15px;
+}
+
+@media (max-width: 1050px) {
+    .header{
+        height: 38vw;
+    }
+    .header-contents{
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 7550px) {
+    .header-contents{
+        max-width: 55%;
+    }
+    .header-contents p{
+        display: none;
+    }
+    .header-contents button{
+        padding: 2vw 4vw;
+    }
 }

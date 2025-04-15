@@ -78,3 +78,10 @@
 .explore-products-list-item img.active {
     border-color: #55996f;
 }
+
+@media (max-width:1050px) {
+    .explore-products{
+        max-width: 100%;
+        font-size: 14px;
+    }
+}
