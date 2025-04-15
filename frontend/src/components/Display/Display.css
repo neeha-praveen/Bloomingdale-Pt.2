@@ -1,0 +1,132 @@
+.display {
+    margin-top: 30px;
+    padding: 0 40px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.display h2{
+    font-size: max(2vw,24px);
+    font-weight: 600;
+}
+
+.display-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top:30px;
+    gap: 25px;
+    row-gap: 40px;
+    justify-content: center;
+    width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+    .display-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .display-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .display-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .display-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Add styles for product items to make them smaller */
+.product-item {
+    background: white;
+    border-radius: 15px;
+    padding: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.food-item-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1; /* Makes container square */
+}
+
+.food-item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.food-item-info {
+    padding: 15px 5px 10px 5px;
+    width: 100%;
+}
+
+.food-item-name-rating {
+    margin-bottom: 8px;
+}
+
+.food-item-name-rating p {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.food-item-price {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2e2e2e;
+    margin: 0;
+}
+
+/* Adjust counter and add button sizes */
+.add {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.food-item-counter {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.food-item-counter img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.food-item-counter span {
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 20px;
+    text-align: center;
+}
