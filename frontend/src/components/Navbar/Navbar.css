@@ -37,6 +37,7 @@
 
 .navbar button:hover {
     background-color: #ff66c4;
+    color: black;
 }
 
 /*for underline to come when hovered*/

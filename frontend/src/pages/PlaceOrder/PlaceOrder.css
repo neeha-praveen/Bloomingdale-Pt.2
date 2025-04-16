@@ -1,0 +1,134 @@
+.place-order {
+    margin: 40px auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: stretch;
+    gap: 50px;
+    max-width: 1400px;
+}
+
+.place-order-left {
+    flex: 1 1 0;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    width: calc(50% - 25px);
+}
+
+.place-order-left .title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.place-order-left input {
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.place-order-left input:focus {
+    border-color: #ff66c4;
+    box-shadow: 0 0 0 2px rgba(255, 102, 196, 0.1);
+    outline: none;
+}
+
+.place-order-left input::placeholder {
+    color: #999;
+}
+
+.place-order-left .multi-fields {
+    display: flex;
+    gap: 15px;
+}
+
+.place-order-right {
+    flex: 1 1 0;
+    width: calc(50% - 25px);
+}
+
+.cart-total {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    height: 100%;
+}
+
+.cart-total h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.cart-total-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    color: #555;
+}
+
+.cart-total hr {
+    margin: 10px 0;
+    border: none;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.cart-total button {
+    width: 100%;
+    padding: 14px;
+    background-color: #ff66c4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.cart-total button:hover {
+    background-color: #ff4db8;
+}
+
+@media (max-width: 900px) {
+    .place-order {
+        flex-direction: column;
+        padding: 0 20px;
+        gap: 20px;
+    }
+
+    .place-order-left,
+    .place-order-right {
+        width: 100%;
+    }
+
+    .place-order-left .multi-fields {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .place-order {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .place-order-left {
+        padding: 20px;
+    }
+
+    .cart-total {
+        padding: 20px;
+    }
+}

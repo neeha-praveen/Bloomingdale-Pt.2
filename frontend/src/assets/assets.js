@@ -86,7 +86,7 @@ export const products_all = [
         _id : "1",
         name: "Hibiscus",
         image: flower_1,
-        price: 299,
+        price:299,
         category: "flowering plants"
     },
     {
