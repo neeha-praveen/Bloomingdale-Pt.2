@@ -1,6 +1,6 @@
 import { request } from "http";
 import productModel from "../models/productModel.js";
-import fr from 'fs';
+import fs from 'fs';
 
 // add product items
 const addProduct = async (request, response) => {
@@ -36,17 +36,30 @@ const listProduct = async (request,response) => {
 
 // remove product item
 const removeProduct = async (request, response) => {
-    try {
-        const product = await productModel.findById(request.body.id); // to find the product model using the id
-        fs.unlink(`uploads/${product.image}`, ()=>{}); // to delete from uploads folder
+  try {
+    const product = await productModel.findById(request.body.id);
 
-        await productModel.findByIdAndDelete(request.body.id); // to delete from database
-        response.json({success:true, message:'food removed'});
+    if (!product) {
+      return response.json({ success: false, message: 'Product not found' });
     }
-    catch (error) {
-        console.log(error);
-        response.json({success:false, message: 'error'});
-    }
-}
+
+    const imagePath = `uploads/${product.image}`;
+    fs.unlink(imagePath, (err) => {
+      if (err) {
+        console.error("❌ Failed to delete image:", imagePath, err.message);
+        // Note: don't return here — even if image is missing, proceed to delete from DB
+      } else {
+        console.log("🗑️ Deleted image:", imagePath);
+      }
+    });
+
+    await productModel.findByIdAndDelete(request.body.id);
+    response.json({ success: true, message: 'Product removed' });
+
+  } catch (error) {
+    console.error("❌ Backend error while removing product:", error);
+    response.json({ success: false, message: 'Error removing product' });
+  }
+};
 
 export {addProduct, listProduct, removeProduct}
