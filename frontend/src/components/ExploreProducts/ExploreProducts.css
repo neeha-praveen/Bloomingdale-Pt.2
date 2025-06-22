@@ -17,7 +17,7 @@
 
 .explore-products-list {
     display: flex;
-    gap: 30px;
+    gap: 28px;
     align-items: flex-start;
     margin: 10px 0px 0px 0px;
     overflow-x: scroll;
