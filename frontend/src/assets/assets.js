@@ -10,14 +10,16 @@ import twitter from './images/twitter.png'
 import linkedin from './images/linkedin.png'
 import cross_icon from './images/cross_icon.png'
 
-import product_1 from './images/flowering_plants.jpg'
-import product_2 from './images/outdoor_plants.jpg'
-import product_3 from './images/indoor_plants.jpg'
-import product_4 from './images/landscape_plants.jpg'
-import product_5 from './images/medicinal_plants.jpg'
-import product_6 from './images/succulents.jpg'
-import product_7 from './images/gardening_essentials.jpg'
-import product_8 from './images/gifting.jpg'
+import flowering from './images/product_list/flowering_plants.jpg'
+import foliage from './images/product_list/outdoor_plants.jpg'
+import herbs from './images/product_list/herbs.jpg'
+import medicinal from './images/product_list/medicinal_plants.jpg'
+import fruits from './images/product_list/fruits.jpeg'
+import vegetable from './images/product_list/vegetable.jpg'
+import succulents from './images/product_list/succulents.jpg'
+import bonsai from './images/product_list/bonsai.jpg'
+import aquatic from './images/product_list/aquatic.jpg'
+import gardening from './images/product_list/gardening_essentials.jpg'
 
 import flower_1 from './images/flower_1.jpg'
 import flower_2 from './images/flower_2.jpg'
@@ -49,35 +51,43 @@ export const assets = {
 export const product_list = [
     {
         product_name: "flowering plants",
-        product_image: product_1
+        product_image: flowering
     },
     {
-        product_name: "outdoor plants",
-        product_image: product_2
+        product_name: "foliage plants",
+        product_image: foliage
     },
     {
-        product_name: "indoor plants",
-        product_image: product_3
-    },
-    {
-        product_name: "landscape plants",
-        product_image: product_4
+        product_name: "herbs",
+        product_image: herbs
     },
     {
         product_name: "medicinal plants",
-        product_image: product_5
+        product_image: medicinal
+    },
+    {
+        product_name: "fruit plants",
+        product_image: fruits
+    },
+    {
+        product_name: "vegetable plants",
+        product_image: vegetable
     },
     {
         product_name: "succulents",
-        product_image: product_6
+        product_image: succulents
+    },
+    {
+        product_name: "bonsai",
+        product_image: bonsai
+    },
+    {
+        product_name: "aquatic plants",
+        product_image: aquatic
     },
     {
         product_name: "gardening essentials",
-        product_image: product_7
-    },
-    {
-        product_name: "for gifting",
-        product_image: product_8
+        product_image: gardening
     }
 ]
 
