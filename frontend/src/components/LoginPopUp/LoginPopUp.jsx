@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './LoginPopUp.css';
+import { X } from 'lucide-react';
 import { assets } from '../../assets/assets'
 
 const LoginPopUp = ({setShowLogin}) => {
@@ -9,7 +10,7 @@ const LoginPopUp = ({setShowLogin}) => {
             <form className="login-popup-container">
             <div className="login-popup-title">
                 <h2>{currentState}</h2>
-                <img className="cross-icon" onClick={()=>setShowLogin(false)} src={assets.cross_icon} alt="" />
+                <X className="cross-icon" onClick={()=>setShowLogin(false)}  />
             </div>
             <div className="login-popup-inputs">
                 {currentState==="Login"?<></>:<input type="text" placeholder="Your Name" required/>}

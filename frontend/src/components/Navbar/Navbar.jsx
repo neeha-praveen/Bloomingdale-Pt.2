@@ -3,6 +3,7 @@ import './Navbar.css'
 import { assets } from '../../assets/assets'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { StoreContext } from '../../context/StoreContext';
+import { Search, ShoppingCart } from 'lucide-react';
 
 function Navbar({ setShowLogin }) {
   const [menu, setMenu] = useState("home");
@@ -19,13 +20,12 @@ function Navbar({ setShowLogin }) {
       }
     } else {
       navigate("/", { replace: false });
-      // Wait for navigation to finish before scrolling
       setTimeout(() => {
         const section = document.getElementById("explore-products");
         if (section) {
           section.scrollIntoView({ behavior: "smooth" });
         }
-      }, 100); // small delay to let the page load
+      }, 100); 
     }
   };
 
@@ -40,9 +40,9 @@ function Navbar({ setShowLogin }) {
       </ul>
 
       <div className="navbar-right">
-        <img src={assets.search} alt="search" className="search-icon" />
+        <Search alt="search" className="search-icon" />
         <div className="cart-container">
-          <Link to="/cart"><img src={assets.cart} alt="cart" className="cart-icon" /></Link>
+          <Link to="/cart"><ShoppingCart alt="cart" className="cart-icon" /></Link>
           <div className={getTotalCart() === 0 ? "" : "dot"}></div>
         </div>
         <button onClick={() => setShowLogin(true)}>Sign In</button>

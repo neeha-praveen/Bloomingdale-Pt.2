@@ -13,7 +13,7 @@ const Display = ({category}) => {
                     if(category==="All" || category===item.category) {
                         return <ProductItem 
                         key={index} 
-                        id={item._id}  // Make sure to use _id instead of id to match your data
+                        id={item._id} 
                         name={item.name} 
                         price={item.price} 
                         image={item.image}

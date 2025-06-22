@@ -1,5 +1,6 @@
 import React from "react";
 import './Footer.css';
+import { Instagram, Twitter, Linkedin } from 'lucide-react';
 import { assets } from "../../assets/assets";
 
 const Footer = () => {
@@ -10,9 +11,9 @@ const Footer = () => {
                     <img src={assets.logo} alt="" />
                     <p>dummy text</p>
                     <div className="footer-social-icons">
-                        <img src={assets.insta} alt="" />
-                        <img src={assets.twitter} alt="" />
-                        <img src={assets.linkedin} alt="" />
+                        <Instagram className="social-icon"/>
+                        <Twitter className="social-icon"/>
+                        <Linkedin className="social-icon"/>
                     </div>
                 </div>
                 <div className="footer-content-center">
