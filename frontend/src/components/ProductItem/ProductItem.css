@@ -7,7 +7,7 @@
     animation: fadeIn 1s;
 }
 
-.food-item-image-container {
+.product-item-image-container {
     width: 100%;  /* Make the container responsive */
     height: 250px; /* Set a fixed height */
     display: flex;
@@ -18,23 +18,30 @@
     position: relative;
 }
 
-.food-item-info {
+.product-item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This will maintain aspect ratio while filling the container */
+    object-position: center; /* Centers the image within the container */
+}
+
+.product-item-info {
     padding: 20px;
 }
 
-.food-item-name-rating p{
+.product-item-name-rating p{
     font-size: 20px;
     font-weight: 500;
 }
 
-.food-item-price {
+.product-item-price {
     color: #49557e;
     font-size: 20px;
     font-weight: 500;
     margin: 10px 0px;
 }
 
-.food-item-counter {
+.product-item-counter {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -46,7 +53,7 @@
     right: 10px;
 }
 
-.food-item-counter img {
+.product-item-counter img {
     width: 20px;
     height: 20px;
     cursor: pointer;
