@@ -3,13 +3,24 @@ import './Navbar.css'
 import { assets } from '../../assets/assets'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { StoreContext } from '../../context/StoreContext';
-import { Search, ShoppingCart } from 'lucide-react';
+import { Search, ShoppingCart, CircleUserRound, ShoppingBag, LogOut } from 'lucide-react';
 
 function Navbar({ setShowLogin }) {
   const [menu, setMenu] = useState("home");
-  const { getTotalCart } = useContext(StoreContext);
+  const { getTotalCart, token, setToken } = useContext(StoreContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const [loggingOut, setLoggingOut] = useState(false);
+
+  const logout = () => {
+    setLoggingOut(true);
+    setTimeout(() => {
+      localStorage.removeItem("token");
+      setToken("");
+      setLoggingOut(false);
+      navigate('/');
+    }, 2000);
+  }
 
   const handleProductsClick = () => {
     setMenu("products");
@@ -25,7 +36,7 @@ function Navbar({ setShowLogin }) {
         if (section) {
           section.scrollIntoView({ behavior: "smooth" });
         }
-      }, 100); 
+      }, 100);
     }
   };
 
@@ -45,7 +56,23 @@ function Navbar({ setShowLogin }) {
           <Link to="/cart"><ShoppingCart alt="cart" className="cart-icon" /></Link>
           <div className={getTotalCart() === 0 ? "" : "dot"}></div>
         </div>
-        <button onClick={() => setShowLogin(true)}>Sign In</button>
+        {!token ?
+          (
+            <button onClick={() => setShowLogin(true)}>Sign In</button>
+          ) : (
+            <div className='navbar-profile'>
+              <CircleUserRound />
+              <ul className="nav-profile-dropdown">
+                <li><ShoppingBag className='icon' /><p>Orders</p></li>
+                <hr />
+                <li onClick={logout}>
+                  <LogOut className='icon' />
+                  <p>{loggingOut ? "Logging out..." : "Logout"}</p>
+                </li>
+              </ul>
+            </div>
+          )
+        }
       </div>
     </div>
   )
