@@ -5,8 +5,7 @@ import { Upload } from 'lucide-react'
 import { toast } from 'react-toastify';
 
 
-const Add = () => {
-  const url = "http://localhost:4000";
+const Add = ({url}) => {
   const [image, setImage] = useState(false);
   const [data, setData] = useState({
     name: "",
@@ -97,13 +96,15 @@ const Add = () => {
             <p>Product Category</p>
             <select onChange={onChangeHandler} value={data.category} name="category">
               <option value="flowering plants">flowering plants</option>
-              <option value="outdoor plants">outdoor plants</option>
-              <option value="indoor plants">indoor plants</option>
-              <option value="landscape plants">landscape plants</option>
+              <option value="foliage plants">foliage plants</option>
+              <option value="herbs">herbs</option>
               <option value="medicinal plants">medicinal plants</option>
+              <option value="fruit plants">fruit plants</option>
+              <option value="vegetable plants">vegetable plants</option>
               <option value="succulents">succulents</option>
+              <option value="bonsai">bonsai</option>
+              <option value="aquatic plants">aquatic plants</option>
               <option value="gardening essentials">gardening essentials</option>
-              <option value="for gifting">for gifting</option>
             </select>
           </div>
           <div className="add-price flex-col">
