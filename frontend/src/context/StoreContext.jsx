@@ -9,18 +9,36 @@ const StoreContextProvider = (props) => {
     const [token, setToken] = useState('');
     const [products_all, setProductsAll] = useState([]);
 
-    const addToCart = (itemId) => {
-        if (!cartItems[itemId]) {
-            setCartItems((prev) => ({ ...prev, [itemId]: 1 }))
-        }
-        else {
-            setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }))
-        }
-    }
+    const addToCart = async (itemId) => {
+        const updatedCart = { ...cartItems };
 
-    const removeFromCart = (itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
-    }
+        if (!updatedCart[itemId]) {
+            updatedCart[itemId] = 1;
+        } else {
+            updatedCart[itemId] += 1;
+        }
+        setCartItems(updatedCart);
+        if (!token) {
+            localStorage.setItem("guestCart", JSON.stringify(updatedCart));
+        }
+        if (token) {
+            await axios.post(url + "/api/cart/add", { itemId }, { headers: { token } });
+        }
+    };
+
+    const removeFromCart = async (itemId) => {
+        const updatedCart = { ...cartItems };
+        if (updatedCart[itemId] > 0) {
+            updatedCart[itemId] -= 1;
+        }
+        setCartItems(updatedCart);
+        if (!token) {
+            localStorage.setItem("guestCart", JSON.stringify(updatedCart));
+        }
+        if (token) {
+            await axios.post(url + "/api/cart/remove", { itemId }, { headers: { token } })
+        }
+    };
 
     const getTotalCart = () => {
         let totalAmount = 0;
@@ -38,15 +56,38 @@ const StoreContextProvider = (props) => {
         setProductsAll(response.data.data)
     }
 
+    const fetchCartData = async () => {
+        if (token) {
+            const response = await axios.post(url + "/api/cart/get", {}, { headers: { token } });
+            if (response.data.success) {
+                setCartItems(response.data.cartData);
+            }
+        }
+    };
+
     useEffect(() => {
         async function loadData() {
-            await fetchProducts()
-            if (localStorage.getItem("token")) {
-                setToken(localStorage.getItem("token"));
+            await fetchProducts();
+            const savedToken = localStorage.getItem("token");
+            if (savedToken) {
+                setToken(savedToken);
+            } else {
+                // If guest, restore from localStorage
+                const savedCart = JSON.parse(localStorage.getItem("guestCart") || '{}');
+                console.log("restoring guestCart from localStorage:", savedCart);
+                setCartItems({ ...savedCart }); // Spread to trigger React state update
             }
         }
         loadData();
-    }, [])
+    }, []);
+
+
+    useEffect(() => {
+        if (token) {
+            fetchCartData();
+            localStorage.removeItem("guestCart"); // clean up guest cart
+        }
+    }, [token]);
 
     const contextValue = {
         products_all,

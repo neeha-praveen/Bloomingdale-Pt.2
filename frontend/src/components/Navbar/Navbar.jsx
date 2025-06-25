@@ -62,6 +62,7 @@ function Navbar({ setShowLogin }) {
           ) : (
             <div className='navbar-profile'>
               <CircleUserRound />
+              <span className='profile-name'>{name}</span>
               <ul className="nav-profile-dropdown">
                 <li><ShoppingBag className='icon' /><p>Orders</p></li>
                 <hr />

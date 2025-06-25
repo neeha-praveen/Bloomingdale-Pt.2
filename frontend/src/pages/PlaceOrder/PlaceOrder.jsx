@@ -1,29 +1,74 @@
 import React, { useContext } from "react";
 import './PlaceOrder.css';
 import { StoreContext } from "../../context/StoreContext";
+import { useState } from "react";
+import axios from "axios";
 
 const PlaceOrder = () => {
-    const {getTotalCart} = useContext(StoreContext);
+    const {getTotalCart, token, products_all, cartItems, url} = useContext(StoreContext);
+
+    const [data,setData] = useState({
+        firstName:"",
+        lastName:"",
+        email:"",
+        address:"",
+        city:"",
+        state:"",
+        zipcode:"",
+        country:"",
+        phone:""
+    })  
+
+    const onChangeHandler = (event) => {
+        const name=event.target.name;
+        const value=event.target.value;
+        setData(data=>({...data,[name]:value}))
+    }
+
+    const placeOrder = async (event) => {
+        event.preventDefault();
+        let orderItems = [];
+        products_all.map((item)=>{
+            if (cartItems[item._id]>0){
+                let itemInfo = item;
+                itemInfo['quantity'] = cartItems[item._id];
+                orderItems.push(itemInfo);
+            }
+        })
+        let orderData = {
+            address:data,
+            items:orderItems,
+            amount:getTotalCart()+50
+        }
+        let response = await axios.post(url+'/api/order/place',orderData,{headers:{token}});
+        if (response.data.success) {
+            const {session_url} = response.data;
+            window.location.replace(session_url);
+        }
+        else {
+            alert('error');
+        }
+    }
 
     return (
-        <form className="place-order">
+        <form onSubmit={placeOrder} className="place-order">
             <div className="place-order-left">
                 <p className="title">Delivery Information</p>
                 <div className="multi-fields">
-                    <input type="text" placeholder="First Name" />
-                    <input type="text" placeholder="Last Name" />
+                    <input required name="firstName" onChange={onChangeHandler} value={data.firstName} type="text" placeholder="First Name" />
+                    <input required name="lastName" onChange={onChangeHandler} value={data.lastName} type="text" placeholder="Last Name" />
                 </div>
-                <input type="text" placeholder="Email Address" />
-                <input type="text" placeholder="Address" />
+                <input required name="email" onChange={onChangeHandler} value={data.email} type="text" placeholder="Email Address" />
+                <input required name="address" onChange={onChangeHandler} value={data.address} type="text" placeholder="Address" />
                 <div className="multi-fields">
-                    <input type="text" placeholder="City" />
-                    <input type="text" placeholder="State" />
+                    <input required name="city" onChange={onChangeHandler} value={data.city} type="text" placeholder="City" />
+                    <input required name="state" onChange={onChangeHandler} value={data.state} type="text" placeholder="State" />
                 </div>
                 <div className="multi-fields">
-                    <input type="text" placeholder="Zip code" />
-                    <input type="text" placeholder="Country" />
+                    <input required name="zipcode" onChange={onChangeHandler} value={data.zipcode} type="text" placeholder="Zip code" />
+                    <input required name="country" onChange={onChangeHandler} value={data.country} type="text" placeholder="Country" />
                 </div>
-                <input type="text" placeholder="Phone" />
+                <input required name="phone" onChange={onChangeHandler} value={data.phone} type="text" placeholder="Phone" />
             </div>
             <div className="place-order-right">
                 <div className="cart-total">
@@ -44,7 +89,7 @@ const PlaceOrder = () => {
                             <b>₹{getTotalCart()===0?0:getTotalCart() + 50}</b>
                         </div>
                     </div>
-                    <button>Proceed to Payment</button>
+                    <button type='submit'>Proceed to Payment</button>
                 </div>
             </div>
         </form>
