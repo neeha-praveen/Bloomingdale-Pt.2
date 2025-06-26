@@ -7,7 +7,7 @@ const Sidebar = () => {
   return (
     <div className='sidebar'>
         <div className='sidebar-options'>
-            <NavLink to='/add' className="sidebar-option">
+            <NavLink to='/' className="sidebar-option">
                 <CirclePlus/>
                 <p>Add Items</p>
             </NavLink>
