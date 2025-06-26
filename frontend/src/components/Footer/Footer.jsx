@@ -8,8 +8,8 @@ const Footer = () => {
         <div className="footer" id="footer">
             <div className="footer-content">
                 <div className="footer-content-left">
-                    <img src={assets.logo} alt="" />
-                    <p>dummy text</p>
+                    <img src={assets.footer_logo} alt="" />
+                    <p>Your trusted source for healthy plants and gardening essentials.</p>
                     <div className="footer-social-icons">
                         <Instagram className="social-icon"/>
                         <Twitter className="social-icon"/>
@@ -34,7 +34,7 @@ const Footer = () => {
                 </div>
             </div>
             <hr></hr>
-            <p className="footer-copyright">Copyright © 2025 Bloomingdale. All rights reserved.</p>
+            <p className="footer-copyright">Copyright © 2025 Bloomingdale. All rights not reserved.</p>
         </div>
     )
 }

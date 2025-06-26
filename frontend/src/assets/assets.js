@@ -1,4 +1,5 @@
 import logo from './images/logo2.png'
+import footer_logo from './images/BloomingDale.png'
 import search from './images/search.png'
 import cart from './images/cart.png'
 import basket from './images/basket_icon.png'
@@ -45,7 +46,8 @@ export const assets = {
     insta: insta,
     twitter: twitter,
     linkedin: linkedin,
-    cross_icon: cross_icon
+    cross_icon: cross_icon,
+    footer_logo: footer_logo
 }
 
 export const product_list = [
