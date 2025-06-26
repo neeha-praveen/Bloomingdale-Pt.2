@@ -44,6 +44,7 @@
     border-radius: 4px;
     background-color: #ff66c4;
     color: white;
+    cursor: pointer;
 }
 
 @media (max-width:900px) {
