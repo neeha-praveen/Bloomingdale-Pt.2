@@ -64,7 +64,7 @@ function Navbar({ setShowLogin }) {
               <CircleUserRound />
               <span className='profile-name'>{name}</span>
               <ul className="nav-profile-dropdown">
-                <li><ShoppingBag className='icon' /><p>Orders</p></li>
+                <li onClick={()=>navigate('/myorders')}><ShoppingBag className='icon' /><p>Orders</p></li>
                 <hr />
                 <li onClick={logout}>
                   <LogOut className='icon' />

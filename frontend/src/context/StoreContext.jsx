@@ -44,17 +44,26 @@ const StoreContextProvider = (props) => {
         let totalAmount = 0;
         for (const item in cartItems) {
             if (cartItems[item] > 0) {
-                let itemInfo = products_all.find((product) => product._id === item);
+                const itemInfo = products_all.find((product) => product._id === item);
+                if (!itemInfo) {
+                    console.warn(`Product with id ${item} not found in products_all`);
+                    continue; // Skip this item
+                }
                 totalAmount += itemInfo.price * cartItems[item];
             }
         }
         return totalAmount;
-    }
+    };
 
     const fetchProducts = async () => {
-        const response = await axios.get(url + '/api/product/list');
-        setProductsAll(response.data.data)
-    }
+        try {
+            const response = await axios.get(url + '/api/product/list');
+            setProductsAll(response.data.data);
+        } catch (error) {
+            console.error("Failed to fetch products:", error.message);
+            setProductsAll([]);
+        }
+    };
 
     const fetchCartData = async () => {
         if (token) {
