@@ -51,7 +51,6 @@ function Navbar({ setShowLogin }) {
       </ul>
 
       <div className="navbar-right">
-        <Search alt="search" className="search-icon" />
         <div className="cart-container">
           <Link to="/cart"><ShoppingCart alt="cart" className="cart-icon" /></Link>
           <div className={getTotalCart() === 0 ? "" : "dot"}></div>
