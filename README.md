@@ -1,4 +1,4 @@
-# 🌸 Bloomingdale – Online Flower Shop
+# 🌸 Bloomingdale – Online Nursery Shop
 
 Bloomingdale is a full-stack **MERN** application built as a practice project for learning modern web development. It simulates an online flower shop with features like browsing products, managing a cart, placing orders (without payment integration), and an admin panel for backend management.
 
