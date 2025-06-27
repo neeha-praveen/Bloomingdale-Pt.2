@@ -11,7 +11,7 @@ const StoreContextProvider = (props) => {
     const [products_all, setProductsAll] = useState([]);
 
     const addToCart = async (itemId) => {
-        const updatedCart = { ...cartItems };s
+        const updatedCart = { ...cartItems };
 
         if (!updatedCart[itemId]) {
             updatedCart[itemId] = 1;
