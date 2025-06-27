@@ -1,7 +1,7 @@
 .header {
     height:34vw;
     margin: 20px auto;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('header2.jpg');
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/header2.jpg');
     background-size: cover;
     position: relative;
     border-radius: 15px;
