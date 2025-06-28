@@ -66,6 +66,8 @@ import userModel from "../models/userModel.js";
 // };
 
 const placeOrder = async (req, res) => {
+    console.log("Incoming /place hit");
+    console.log("Token decoded userId:", req.body.userId);
     try {
         const newOrder = new orderModel({
             userId: req.body.userId,
@@ -77,7 +79,8 @@ const placeOrder = async (req, res) => {
         await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
 
         // Fake immediate "success"
-        const frontend_url = "http://localhost:5174";
+        const frontend_url = process.env.FRONTEND_URL || "http://localhost:5174";
+
         res.json({
             success: true,
             session_url: `${frontend_url}/verify?success=true&orderId=${newOrder._id}`
