@@ -7,63 +7,69 @@ import { useNavigate } from "react-router-dom";
 
 
 const PlaceOrder = () => {
-    const {getTotalCart, token, products_all, cartItems, url} = useContext(StoreContext);
+    const { getTotalCart, token, products_all, cartItems, url } = useContext(StoreContext);
 
-    const [data,setData] = useState({
-        firstName:"",
-        lastName:"",
-        email:"",
-        address:"",
-        city:"",
-        state:"",
-        zipcode:"",
-        country:"",
-        phone:""
-    })  
+    const [data, setData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        address: "",
+        city: "",
+        state: "",
+        zipcode: "",
+        country: "",
+        phone: ""
+    })
 
     const onChangeHandler = (event) => {
-        const name=event.target.name;
-        const value=event.target.value;
-        setData(data=>({...data,[name]:value}))
+        const name = event.target.name;
+        const value = event.target.value;
+        setData(data => ({ ...data, [name]: value }))
     }
 
     const placeOrder = async (event) => {
         event.preventDefault();
         let orderItems = [];
-        products_all.map((item)=>{
-            if (cartItems[item._id]>0){
+        products_all.map((item) => {
+            if (cartItems[item._id] > 0) {
                 let itemInfo = item;
                 itemInfo['quantity'] = cartItems[item._id];
                 orderItems.push(itemInfo);
             }
         })
         let orderData = {
-            address:data,
-            items:orderItems,
-            amount:getTotalCart()+50
+            address: data,
+            items: orderItems,
+            amount: getTotalCart() + 50
         }
-        let response = await axios.post(url+'/api/order/place',orderData,{headers:{token}});
-        if (response.data.success) {
-            const {session_url} = response.data;
-            window.location.replace(session_url);
-        }
-        else {
-            alert('error');
+        try {
+            let response = await axios.post(url + '/api/order/place', orderData, { headers: { token } });
+
+            if (response.data.success) {
+                const { session_url } = response.data;
+                window.location.replace(session_url);
+            } else {
+                console.error("Order response error:", response.data);
+                alert('Failed to place order.');
+            }
+        } catch (error) {
+            console.error("Checkout error:", error);
+            alert('An error occurred during checkout.');
         }
     }
 
     const navigate = useNavigate()
 
-    useEffect(()=>{
-        if(!token) {
+    useEffect(() => {
+        if (!token) {
             navigate('/cart')
             alert('You must login to place an order!')
         }
-        else if(getTotalCart()===0) {
+        else if (getTotalCart() === 0) {
             navigate('/cart')
             alert('Cart is empty!')
         }
-    },[token])
+    }, [token])
 
     return (
         <form onSubmit={placeOrder} className="place-order">
@@ -96,12 +102,12 @@ const PlaceOrder = () => {
                         <hr />
                         <div className="cart-total-details">
                             <p>Delivery Fee</p>
-                            <p>₹{getTotalCart()===0?0:50}</p>
+                            <p>₹{getTotalCart() === 0 ? 0 : 50}</p>
                         </div>
                         <hr />
                         <div className="cart-total-details">
                             <b>Total</b>
-                            <b>₹{getTotalCart()===0?0:getTotalCart() + 50}</b>
+                            <b>₹{getTotalCart() === 0 ? 0 : getTotalCart() + 50}</b>
                         </div>
                     </div>
                     <button type='submit'>Proceed to Payment</button>
