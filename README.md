@@ -7,7 +7,7 @@ Bloomingdale is a full-stack **MERN** application built as a practice project fo
 - **Frontend**: [https://bloomingdale-garden.netlify.app](https://bloomingdale-garden.netlify.app)
 - **Admin**: [https://bloomingdale-admin.netlify.app](https://bloomingdale-admin.netlify.app)
 - **Backend**: [https://bloomingdale-backend.onrender.com](https://bloomingdale-backend.onrender.com)
-
+> **Quick Note**: The website and admin dashboard fetch data from the backend, so the backend must be open and running for everything to work as expected.
 ---
 
 ## ✨ Features
@@ -36,4 +36,4 @@ Bloomingdale is a full-stack **MERN** application built as a practice project fo
 | **Netlify**    | Frontend Hosting                  |
 | **Render**     | Backend Hosting                   |
 
-
+---
